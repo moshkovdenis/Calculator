@@ -15,7 +15,7 @@ public class CalculatorApp {
         String[] input = getString().split(" ");
         inputCheck(input);
         String operation = input[1];
-        if (numberCheck(input[0]) && numberCheck(input[2])) {
+        if (romeNumberCheck(input[0]) && romeNumberCheck(input[2])) {
             String fistNum = input[0].toUpperCase();
             String secondNum = input[2].toUpperCase();
             String result = RomeNumbers.calculation(fistNum,secondNum,operation);
@@ -39,7 +39,7 @@ public class CalculatorApp {
             throw new InvalidInputException(Errors.INPUT.getMessage());
         }
     }
-    public static boolean numberCheck(String num) {
+    public static boolean romeNumberCheck(String num) {
         return RomeNumbers.choiceNum(num) != -1;
     }
 }

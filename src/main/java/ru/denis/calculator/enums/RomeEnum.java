@@ -1,6 +1,7 @@
 package ru.denis.calculator.enums;
 
 public enum RomeEnum {
+    O("0",0),
     I("I", 1),
     II("II", 2),
     III("III", 3),

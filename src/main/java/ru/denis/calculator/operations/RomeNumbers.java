@@ -11,25 +11,25 @@ public class RomeNumbers {
 
    public static int choiceNum(String num) {
        int result = 0;
-       if (num.equals(RomeEnum.I.getKey())) {
+       if (RomeEnum.I.getKey().equals(num)) {
            result = RomeEnum.I.getValue();
-       } else if (num.equals(RomeEnum.II.getKey())) {
+       } else if (RomeEnum.II.getKey().equals(num)) {
            result = RomeEnum.II.getValue();
-       } else if (num.equals(RomeEnum.III.getKey())) {
+       } else if (RomeEnum.III.getKey().equals(num)) {
            result = RomeEnum.III.getValue();
-       } else if (num.equals(RomeEnum.IV.getKey())) {
+       } else if (RomeEnum.IV.getKey().equals(num)) {
            result = RomeEnum.IV.getValue();
-       } else if (num.equals(RomeEnum.V.getKey())) {
+       } else if (RomeEnum.V.getKey().equals(num)) {
            result = RomeEnum.V.getValue();
-       } else if (num.equals(RomeEnum.VI.getKey())) {
+       } else if (RomeEnum.VI.getKey().equals(num)) {
            result = RomeEnum.VI.getValue();
-       } else if (num.equals(RomeEnum.VII.getKey())) {
+       } else if (RomeEnum.VII.getKey().equals(num)) {
            result = RomeEnum.VII.getValue();
-       } else if (num.equals(RomeEnum.VIII.getKey())) {
+       } else if (RomeEnum.VIII.getKey().equals(num)) {
            result = RomeEnum.VIII.getValue();
-       } else if (num.equals(RomeEnum.IX.getKey())) {
+       } else if (RomeEnum.IX.getKey().equals(num)) {
            result = RomeEnum.IX.getValue();
-       } else if (num.equals(RomeEnum.X.getKey())) {
+       } else if (RomeEnum.X.getKey().equals(num)) {
            result = RomeEnum.X.getValue();
        } else {
            result = -1;
@@ -39,25 +39,35 @@ public class RomeNumbers {
 
     public static String calculation(String num1, String num2, String operation) throws CalculatorException {
         int result = 0;
+        String romeNum = "";
         int firstNum = choiceNum(num1);
         int secondNum = choiceNum(num2);
         switch (operation) {
             case "+":
                 result = firstNum + secondNum;
+                romeNum = toRome(result);
                 break;
             case "-":
                 result = firstNum - secondNum;
+                if (result < 0) {
+                    result *= -1;
+                    romeNum = "-" + toRome(result);
+                } else {
+                    romeNum = toRome(result);
+                }
                 break;
             case "*":
                 result = firstNum * secondNum;
+                romeNum = toRome(result);
                 break;
             case "/":
                 result = firstNum / secondNum;
+                romeNum = toRome(result);
                 break;
             default:
                 throw new WrongOperationException(Errors.OPERATIONS.getMessage());
         }
-        return toRome(result);
+        return romeNum;
     }
     public static String toRome(int key) {
         for (RomeEnum i : RomeEnum.values()) {

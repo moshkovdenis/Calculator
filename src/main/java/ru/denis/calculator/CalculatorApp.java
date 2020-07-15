@@ -35,7 +35,7 @@ public class CalculatorApp {
         return new Scanner(System.in).nextLine();
     }
     public static void inputCheck(String[] input) throws InvalidInputException {
-        if (input.length > 3) {
+        if (input.length != 3) {
             throw new InvalidInputException(Errors.INPUT.getMessage());
         }
     }
